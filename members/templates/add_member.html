@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add member</title>
-</head>
-<body>
-    <h2>Add member:</h2>
-    <form action="" method="get">
-        <label for="">firstname:</label>
-        <input type="text" name="firstname">
-        <label for="">lastname:</label>
-        <input type="text" name="lastname">
-        <label for="">age:</label>
-        <input type="text" name="age"><br><br>
-        <button type="submit">add member</button>
-    </form>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}
+    add member
+{% endblock title %}
+
+{% block content %}
+<h2>Add member:</h2>
+  
+<form action="" method="post">
+    {% csrf_token %}
+    {% comment %} <label for="">firstname:</label>
+    <input type="text" name="firstname">
+    <label for="">lastname:</label>
+    <input type="text" name="lastname">
+    <label for="">age:</label>
+    <input type="text" name="age"><br><br>
+    <button type="submit">add member</button> {% endcomment %}
+    {{form}}
+    <button type="submit">add member</button>
+</form>
+{% endblock content %}

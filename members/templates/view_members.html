@@ -8,7 +8,7 @@
 <body>
     <ul>
         {% for x in allMembers %}
-            <li>name:{{x.firstname}} {{x.lastname}} age:{{x.age}}</li>
+            <li>name: <a href="http://127.0.0.1:8000/members/memberDetails/{{x.id}}">{{x.firstname}} {{x.lastname}}</a> </li>
         {% endfor %}
     </ul>
 </body>
