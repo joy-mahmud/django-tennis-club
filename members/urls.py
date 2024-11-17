@@ -9,5 +9,7 @@ urlpatterns = [
     path("addMultipleMember/",views.add_multiple_member),
     path('viewAllMembers/',views.view_members,name="view_members"),
     path('searchMember/',views.search_member),
-    path('memberDetails/<int:id>',views.member_details)
+    path('memberDetails/<int:id>',views.member_details),
+    path('deleteMember/<int:id>/',views.deleteMember, name="deleteMember"),
+    path('updateMember/<int:id>',views.updateMember,name="update_member")
 ]

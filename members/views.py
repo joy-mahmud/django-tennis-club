@@ -97,3 +97,28 @@ def search_member(request):
     }
     
     return render(request,'search_member.html',context)
+
+def deleteMember(request,id):
+    try:
+        member=Member.objects.get(id=id)
+        member.delete()
+        return redirect('view_members')
+    except:
+        return HttpResponse("This id doesn't exist")
+
+def updateMember(request,id):
+    member=Member.objects.get(id=id)
+    
+    if request.method == "POST":
+        memberForm=AddMemberForm(request.POST,instance=member)
+        if memberForm.is_valid():
+            memberForm.save()
+            return redirect('view_members')
+        else:
+            HttpResponse('all data are not valid')
+            
+    memberForm=AddMemberForm(instance=member)
+    context={
+        "form":memberForm
+    }
+    return render(request,'update_member.html',context)
