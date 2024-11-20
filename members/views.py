@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from members.models import Member
-from members.forms import MemberSearchForm,AddMemberForm
+from members.forms import MemberSearchForm,AddMemberForm,UpdateMemberForm
 
 # Create your views here.
 
@@ -110,15 +110,48 @@ def updateMember(request,id):
     member=Member.objects.get(id=id)
     
     if request.method == "POST":
-        memberForm=AddMemberForm(request.POST,instance=member)
+        memberForm=UpdateMemberForm(request.POST,instance=member)
+        print(request.POST)
         if memberForm.is_valid():
             memberForm.save()
             return redirect('view_members')
         else:
-            HttpResponse('all data are not valid')
+          return HttpResponse('all data are not valid')
             
-    memberForm=AddMemberForm(instance=member)
+    memberForm=UpdateMemberForm(instance=member)
     context={
         "form":memberForm
     }
     return render(request,'update_member.html',context)
+
+def testing(request):
+    fruits=['apple', 'banana','cherry']
+    persons=[
+        {
+            "firstname": "John",
+            "lastname": "Doe",
+            "age": 28
+        },
+        {
+            "firstname": "Jane",
+            "lastname": "Smith",
+            "age": 34
+        },
+        {
+            "firstname": "Michael",
+            "lastname": "Brown",
+            "age": 42
+        },
+        {
+            "firstname": "Emily",
+            "lastname": "Davis",
+            "age": 25
+        },
+        {
+            "firstname": "Daniel",
+            "lastname": "Wilson",
+            "age": 30
+        }
+        ]
+
+    return JsonResponse({'data':persons})

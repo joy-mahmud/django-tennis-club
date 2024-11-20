@@ -9,3 +9,8 @@ class AddMemberForm(forms.ModelForm):
     class Meta:
         model=Member
         fields=["firstname","lastname","age"]
+        
+class UpdateMemberForm(forms.ModelForm):
+    class Meta:
+        model=Member
+        fields=["firstname","lastname","age"]

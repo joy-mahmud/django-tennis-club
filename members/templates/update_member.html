@@ -2,9 +2,10 @@
 {% block title %}update member{% endblock title %}
 {% block content %}
 <h2>Update member:</h2>
-    <form action="" mehtod="post">
+    <form action="" method="post">
         {% csrf_token %}
         {{form}}
+        
         <button type="submit">update</button>
     </form>
 {% endblock content %}

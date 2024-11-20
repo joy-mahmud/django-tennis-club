@@ -6,3 +6,8 @@ class Member(models.Model):
     firstname=models.CharField(max_length=100)
     lastname=models.CharField(max_length=100)
     age=models.IntegerField(null=True)
+    
+    
+class Fruits(models.Model):
+    name=models.CharField(max_length=100)
+    count=models.IntegerField()

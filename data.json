@@ -1,0 +1,42 @@
+[
+    {
+        "model": "members.fruits",
+        "pk": 1,
+        "fields": {
+            "name": "Apple",
+            "count": 50
+        }
+    },
+    {
+        "model": "members.fruits",
+        "pk": 2,
+        "fields": {
+            "name": "Banana",
+            "count": 30
+        }
+    },
+    {
+        "model": "members.fruits",
+        "pk": 3,
+        "fields": {
+            "name": "Orange",
+            "count": 20
+        }
+    },
+    {
+        "model": "members.fruits",
+        "pk": 4,
+        "fields": {
+            "name": "Grapes",
+            "count": 40
+        }
+    },
+    {
+        "model": "members.fruits",
+        "pk": 5,
+        "fields": {
+            "name": "Mango",
+            "count": 25
+        }
+    }
+]
