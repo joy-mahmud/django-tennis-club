@@ -2,5 +2,13 @@
 {% block title %}library-home{% endblock title %}
 {% block content %}
 
-    <h2>Library home page</h2>
+   <div>
+    <ul>
+        {% for author in authors %}
+         <li> {{author.name}} <a href="{% url 'addProfile' author.id %}"><button>add profile</button></a></li>
+        {% endfor %}
+       
+    </ul>
+       
+   </div>
 {% endblock content %}
