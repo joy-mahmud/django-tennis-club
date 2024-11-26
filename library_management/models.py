@@ -14,7 +14,11 @@ class Profile(models.Model):
     website=models.URLField(null=True,blank=True)
     birthDate=models.DateField(null=True,blank=True)
     author=models.OneToOneField(Author, on_delete=models.CASCADE)
-    
-    
+      
     def __str__(self) -> str:
         return "profile of an author"
+class Book(models.Model):
+    title=models.CharField(max_length=200)
+    published_date=models.DateField()
+    author=models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books")
+    

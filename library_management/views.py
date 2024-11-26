@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
-from .models import Author,Profile
+from django.http import HttpResponse,JsonResponse
+from .models import Author,Profile,Book
 from .forms import ProfileForm
 
 # Create your views here.
@@ -34,7 +34,11 @@ def addProfile(request,id):
        return HttpResponse("something went wrong")    
         
         
-        
+def addBook(request):
+    author=Author.objects.get(id=2)
+    book=Book.objects.create(title="gitanjoli",published_date="1995-04-18",author=author)
+    return HttpResponse("book gitanjoli added successfully")
+          
 
 def testing(request):
     def addProfile():
@@ -56,6 +60,37 @@ def testing(request):
         author=Author.objects.create(name="author six",email="authorsix@gmail.com")
         return HttpResponse("author six has been added")
     
-    return addAthor()    
-    return addProfile()
+    # return addAthor()    
+    # return addProfile()
+    
+    def testManyToOneRelation():
+        author=Author.objects.get(id=2)
+        #books=Book.objects.all()
+        bookList=[]
+        # for book in books:
+            # if book.author_id==author.id:
+            #     book_data={
+            #         "title":book.title,
+            #         "published_date":book.published_date,
+            #         "author-name":book.author.name,
+            #         "author-email":book.author.email
+            #     }
+            #     bookList.append(book_data)
+            # bookList.append(
+            #     {
+            #        "title":book.title,
+            #        "published_date":book.published_date,
+            #        "author-name":book.author.name,
+            #        "author-email":book.author.email
+            #     }
+            # ) 
+        for book in author.books.all():
+            print(book.title,book.published_date)
+        
+                
+        return JsonResponse({"books":bookList})
+    
+    return testManyToOneRelation()
+        
+        
         
