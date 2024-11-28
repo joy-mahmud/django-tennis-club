@@ -66,7 +66,7 @@ def testing(request):
     def testManyToOneRelation():
         author=Author.objects.get(id=2)
         #books=Book.objects.all()
-        bookList=[]
+      
         # for book in books:
             # if book.author_id==author.id:
             #     book_data={
@@ -84,13 +84,44 @@ def testing(request):
             #        "author-email":book.author.email
             #     }
             # ) 
-        for book in author.books.all():
-            print(book.title,book.published_date)
+            
+        books=author.books.all()
+        print(books)
+        bookList=[]
+        for book in books:
+            bookList.append(
+                {
+                    "title":book.title,
+                    "published":book.published_date
+                }
+            )
         
                 
         return JsonResponse({"books":bookList})
     
-    return testManyToOneRelation()
+    #return testManyToOneRelation()
+    
+    def testManyToManyRelation():
+        author1=Author.objects.get(id=1)
+        author2=Author.objects.get(id=2)
+        author3=Author.objects.get(id=6)
+        
+        book=Book.objects.get(id=1)
+        book.authors.add(author1,author2,author3)
+        authors=[]
+        for author in book.authors.all():
+            authors.append({
+                "name":author.name,
+                "email":author.email,
+                "bio":author.profile.bio if hasattr(author,'profile') else None,
+                "website":author.profile.website if hasattr(author,'profile') else None,
+                "birthDate":author.profile.birthDate if hasattr(author,'profile') else None,
+            })
+        # authors=[{"name":author.name,"email":author.email} for author in book.authors.all()]
+        
+        return JsonResponse({"authors":authors})
+    return testManyToManyRelation()
+        
         
         
         
