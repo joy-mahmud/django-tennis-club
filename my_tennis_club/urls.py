@@ -22,5 +22,7 @@ urlpatterns = [
     path("",views.app_home),
     path('admin/', admin.site.urls),
     path('members/',include("members.urls")),
-    path('library/',include("library_management.urls"))
+    path('library/',include("library_management.urls")),
+    path('accounts/',include("accounts.urls")),
+    
 ]
