@@ -7,14 +7,34 @@
 </head>
 <body>
     <header>
-        <h1>{{pageTitle}}</h1>
+        {% include "menu.html" with me="joy" sponsor="W3SCHOOLS" %}
+        {% with pageTitle="welcome to member home page" %}
+        <h1>{{ pageTitle }}</h1>
+        {% endwith %}
+        
     </header>
     <main>
-        <p>{{content}}</p>
+        {% for x in myMembers %}
+            {% if x.age <= 30 %}
+                <p>{{x.id}}:{{x.firstname}} {{x.lastname}}, age:{{x.age}}</p>
+            {% endif %}
+        {% endfor %}
+       <div>
+            {% if greetings1 != 565 and greetings2 == 5 %}
+                <h2>the value of greetings is {{greetings1}} and {{greetings2}}</h2>
+         
+            {% else %}
+                <h2>value is not 5 </h2>    
+            {% endif %}
+
+       </div>
+       <div>
+        {% comment %}
+        <h1>Welcome ladies and gentlemen</h1>
+        {% endcomment %}
+       </div>
     </main>
-    <footer>
-        <p>&copy;{{footer}} </p>
-    </footer>
+   {% include "footer.html" %}
 
 </body>
 </html>

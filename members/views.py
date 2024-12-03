@@ -6,11 +6,13 @@ from members.forms import MemberSearchForm,AddMemberForm,UpdateMemberForm
 # Create your views here.
 
 def members_home(request):
- 
+    members=Member.objects.all().values()
+    print(members)
     context={
-        "pageTitle":"Welcome to  members home page",
-        "content":"Hello everyone thank you for joining our tennis club",
-        "footer":"2024 Your Name"
+        "myMembers":members,
+        "footer":"2024 Your Name",
+        "greetings1":1,
+        "greetings2":5,
         }
     return render(request,"home.html",context)
     
