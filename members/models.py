@@ -8,8 +8,8 @@ class Member(models.Model):
     age=models.IntegerField(null=True)
 
     
-    def __str__(self):
-        return f"{self.firstname} {self.lastname}"
+    # def __str__(self):
+    #     return f"{self.firstname} {self.lastname}"
     
     
     

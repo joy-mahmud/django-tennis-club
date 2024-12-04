@@ -2,17 +2,25 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from members.models import Member
 from members.forms import MemberSearchForm,AddMemberForm,UpdateMemberForm
+from django.db.models import Q
 
 # Create your views here.
 
 def members_home(request):
-    members=Member.objects.all().values()
+    # members=Member.objects.all().values_list('firstname','lastname','age')
+    # members=Member.objects.filter(firstname='joy').values() | Member.objects.filter(age=30).values() | Member.objects.filter(lastname='roy').values()
+    # members= Member.objects.filter(Q(id__gte=4)).values()
+    members=Member.objects.all().order_by('firstname','age').values() #order by firstname and age
+   
     print(members)
+    fruits=["apple","banana"]
     context={
         "myMembers":members,
         "footer":"2024 Your Name",
         "greetings1":1,
         "greetings2":5,
+        "fruits1":["apple","banana"],
+        "fruits2":["apple","banana"]
         }
     return render(request,"home.html",context)
     

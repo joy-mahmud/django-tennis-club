@@ -15,9 +15,10 @@
     </header>
     <main>
         {% for x in myMembers %}
-            {% if x.age <= 30 %}
+            {% comment %} {% if x.age <= 30 %}
                 <p>{{x.id}}:{{x.firstname}} {{x.lastname}}, age:{{x.age}}</p>
-            {% endif %}
+            {% endif %} {% endcomment %}
+            <p><p>{{x.id}}:{{x.firstname}} {{x.lastname}}, age:{{x.age}}</p></p>
         {% endfor %}
        <div>
             {% if greetings1 != 565 and greetings2 == 5 %}
@@ -32,6 +33,11 @@
         {% comment %}
         <h1>Welcome ladies and gentlemen</h1>
         {% endcomment %}
+        {% if fruits1 is fruits2 %}
+        <h1>YES</h1>
+        {% else %}
+        <h1>NO</h1>
+        {% endif %}
        </div>
     </main>
    {% include "footer.html" %}
