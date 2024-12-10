@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
 from .models import Author,Profile,Book
 from .forms import ProfileForm
-
+from django.db.models import Avg,Sum,Count
 # Create your views here.
 
 def home(request):
@@ -11,6 +11,22 @@ def home(request):
         "authors":authors
     }
     return render(request,'library_management/home.html',data)
+def library_status(request):
+    library_stats=Book.objects.aggregate(
+        average_price=Avg('price'),
+        total_books=Count('id'),
+        total_price=Sum('price')
+    )
+    print(library_stats)
+    context={
+        # "average":library_stats['average_price'],
+        # "total_books":library_stats['total_books'],
+        # "total_price":library_stats['total_price']
+        "status":library_stats
+        
+    }
+    return render(request,'library_management/library_status.html',context)
+    
 
 def addProfile(request,id):
     try:
