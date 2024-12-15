@@ -19,7 +19,7 @@ class Profile(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=200)
     published_date=models.DateField()
-    #author=models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books")
+    author=models.ForeignKey(Author, on_delete=models.CASCADE, related_name="books", null=True)
     price=models.DecimalField(max_digits=10,decimal_places=2,null=True)
-    authors=models.ManyToManyField(Author, related_name="books")
+    #authors=models.ManyToManyField(Author, related_name="books")
     

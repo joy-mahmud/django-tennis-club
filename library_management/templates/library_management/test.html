@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    {% load static %}
+    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'library/css/styles.css' %}">
-
-    <title>{% block title %}library{% endblock title %}</title>
 </head>
 <body>
-    <h2 class="heading">Hello world</h2>
-    {% block content %}{% endblock content %}
+ <div>
+    <h2 class="heading">hello this is heading</h2>
+ </div>
 </body>
 </html>

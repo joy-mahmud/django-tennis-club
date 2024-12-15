@@ -17,12 +17,25 @@ def library_status(request):
         total_books=Count('id'),
         total_price=Sum('price')
     )
-    print(library_stats)
+    authors1=Author.objects.annotate(
+        total_books=Count('books'),
+        avg_book_price=Avg('books__price')
+    )
+    #print(authors1.values())
+    
+    authors2=Author.objects.prefetch_related('books') # prefetch_related works for the many to many and many to one relations
+   
+    print(authors2)
+    books =Book.objects.select_related()
+    
     context={
         # "average":library_stats['average_price'],
         # "total_books":library_stats['total_books'],
         # "total_price":library_stats['total_price']
-        "status":library_stats
+        "status":library_stats,
+        "author_status":authors1,
+        'authors2':authors2,
+        'books':books
         
     }
     return render(request,'library_management/library_status.html',context)
@@ -139,5 +152,6 @@ def testing(request):
     return testManyToManyRelation()
         
         
-        
+def testStatic(request):
+    return render(request,'library_management/test.html')   
         

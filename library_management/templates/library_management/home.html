@@ -1,15 +1,19 @@
 {% extends "layout.html" %}
+
 {% block title %}library-home{% endblock title %}
 {% block content %}
-
    <div>
-    <h1>Heloo i am from home page</h1>
-    <ul>
-        {% for author in authors %}
-         <li class="authorName"> {{author.name}} <a href="{% url 'addProfile' author.id %}"><button>add profile</button></a></li>
-        {% endfor %}
-       
-    </ul>
-       
+      <h1 class="heading">Hello, I am from the home page</h1>
+      <ul>
+          {% for author in authors %}
+          <li class="heading"> 
+              {{ author.name }} 
+              <a href="{% url 'addProfile' author.id %}">
+                  <button>add profile</button>
+              </a>
+          </li>
+          {% endfor %}
+      </ul>
    </div>
 {% endblock content %}
+{% load static %}
