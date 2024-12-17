@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>members home</title>
+    <title>member home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'member/css/styles.css'%}">
 </head>
-<body>
+<body class="main">
     <header>
         {% include "menu.html" with me="joy" sponsor="W3SCHOOLS" %}
         {% with pageTitle="welcome to member home page" %}

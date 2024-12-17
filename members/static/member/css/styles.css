@@ -1,0 +1,13 @@
+.main {
+    padding: 20px;
+}
+
+.appLink {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}

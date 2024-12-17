@@ -1,13 +1,16 @@
-.hello {
-    color: orange;
-}
-
-div {
-    background-color: aqua;
-}
-
 .heading {
-    color: blueviolet;
+    color: blue;
+    font-weight: 600;
     font-size: 20px;
-    border: 1px solid black;
+
+}
+
+#header {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: brown;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
 }

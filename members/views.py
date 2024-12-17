@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-from members.models import Member
+from .models import Member
 from members.forms import MemberSearchForm,AddMemberForm,UpdateMemberForm
 from django.db.models import Q
 
